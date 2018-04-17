@@ -18,7 +18,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-        <ModalAlert/>
+        <ModalAlert message="Showing Alert!" buttonOKText="OK" />
     );
   }
 }

@@ -16,6 +16,10 @@ export default class ModalAlert extends Component<{}> {
     this.setState({modalVisible: visible});
   }
 
+  constructor (props) {
+    super(props)
+  }
+
   render() {
     return (
       <View style={{marginTop: 22}}>
@@ -29,10 +33,10 @@ export default class ModalAlert extends Component<{}> {
           >
             <View style={styles.alertView}>
               <View style={styles.alertContentView}>
-                <Text>Sample Alert</Text>
+              <Text>{this.props.message}</Text>
                 <Button
                   onPress={() => {this.setModalVisible(false)}}
-                  title="OK">
+                  title={this.props.buttonOKText}>
                 </Button>
               </View>
             </View>
