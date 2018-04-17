@@ -17,37 +17,40 @@ export default class ModalAlert extends Component<{}> {
   }
 
   constructor (props) {
+    console.log('******constructor:' + JSON.stringify(props))
     super(props)
+    this.state = {
+      modalVisible: props.visible
+    }
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({modalVisible: newProps.visible})
   }
 
   render() {
+    console.log('render of modal aler:'+JSON.stringify(this.state))
     return (
-      <View style={{marginTop: 22}}>
-        <Modal
-          animationType="none"
-          transparent={true}
-          visible={this.state.modalVisible}
-        >
-          <View
-            style={styles.alertContainer}
-          >
-            <View style={styles.alertView}>
-              <View style={styles.alertContentView}>
-              <Text>{this.props.message}</Text>
-                <Button
-                  onPress={() => {this.setModalVisible(false)}}
-                  title={this.props.buttonOKText}>
-                </Button>
-              </View>
-            </View>
+      <Modal
+      animationType="none"
+      transparent={true}
+      visible={this.state.modalVisible}
+      onRequestClose={()=>{}}
+    >
+      <View
+        style={styles.alertContainer}
+      >
+        <View style={styles.alertView}>
+          <View style={styles.alertContentView}>
+          <Text>{this.props.message}</Text>
+            <Button
+              onPress={() => {this.setModalVisible(false)}}
+              title={this.props.buttonOKText}>
+            </Button>
           </View>
-        </Modal>
-        <Button
-          style={{marginTop: 22}}
-          onPress={() => {this.setModalVisible(true)}}
-          title="Show Alert">
-        </Button>
+        </View>
       </View>
+    </Modal>
     );
   }
 }
