@@ -9,32 +9,30 @@ import {
 
 export default class ModalAlert extends Component<{}> {
   state = {
-    modalVisible: false,
+    visible: false,
   };
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+  setVisible(visible) {
+    this.setState({visible: visible});
   }
 
   constructor (props) {
-    console.log('******constructor:' + JSON.stringify(props))
     super(props)
     this.state = {
-      modalVisible: props.visible
+      visible: props.visible
     }
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({modalVisible: newProps.visible})
+    this.setState({visible: newProps.visible})
   }
 
   render() {
-    console.log('render of modal aler:'+JSON.stringify(this.state))
     return (
       <Modal
       animationType="none"
       transparent={true}
-      visible={this.state.modalVisible}
+      visible={this.state.visible}
       onRequestClose={()=>{}}
     >
       <View
@@ -44,7 +42,7 @@ export default class ModalAlert extends Component<{}> {
           <View style={styles.alertContentView}>
           <Text>{this.props.message}</Text>
             <Button
-              onPress={() => {this.setModalVisible(false)}}
+              onPress={() => {this.setVisible(false)}}
               title={this.props.buttonOKText}>
             </Button>
           </View>

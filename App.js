@@ -24,7 +24,6 @@ export default class App extends Component<Props> {
     this.setState({visible:visible})
   }
   render() {
-    console.log('state:'+JSON.stringify(this.state))
     return (
       <View style={{marginTop: 22}}>
         <ModalAlert message="Showing Alert!" buttonOKText="OK" visible={this.state.visible}/>
